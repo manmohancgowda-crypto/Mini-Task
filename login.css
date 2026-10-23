@@ -1,0 +1,397 @@
+
+/* ========================
+   IMPORT FONTS
+======================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #060c1f;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ========================
+   ANIMATED BACKGROUND BLOBS
+======================== */
+
+.blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.4;
+    pointer-events: none;
+    animation: blobPulse 10s ease-in-out infinite alternate;
+}
+
+.blob-1 {
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(circle, #1d4ed8, #7c3aed);
+    top: -250px;
+    left: -220px;
+    animation-delay: 0s;
+}
+
+.blob-2 {
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, #0ea5e9, #2563eb);
+    bottom: -180px;
+    right: -180px;
+    animation-delay: -5s;
+    animation-direction: alternate-reverse;
+}
+
+.blob-3 {
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, #7c3aed, #ec4899);
+    top: 60%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+    animation-delay: -3s;
+}
+
+@keyframes blobPulse {
+    0%   { transform: translate(0, 0)   scale(1); }
+    50%  { transform: translate(30px, -25px) scale(1.07); }
+    100% { transform: translate(-25px, 35px) scale(0.96); }
+}
+
+/* ========================
+   WRAPPER & CARD
+======================== */
+
+.login-wrapper {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 24px;
+    padding: 48px 42px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,0.05),
+        0 28px 72px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    animation: cardIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cardIn {
+    from { opacity: 0; transform: translateY(32px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* Shake card on wrong credentials */
+.login-card.shake {
+    animation: shake 0.45s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-12px); }
+    40%       { transform: translateX(12px); }
+    60%       { transform: translateX(-8px); }
+    80%       { transform: translateX(8px); }
+}
+
+/* ========================
+   BRAND SECTION
+======================== */
+
+.brand {
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.brand-icon {
+    font-size: 3.2rem;
+    margin-bottom: 14px;
+    display: inline-block;
+    filter: drop-shadow(0 0 24px rgba(59,130,246,0.7));
+    animation: floatBall 3.5s ease-in-out infinite;
+}
+
+@keyframes floatBall {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+}
+
+.brand-name {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -1.2px;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 6px;
+}
+
+.brand-tagline {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 400;
+}
+
+/* ========================
+   FORM FIELDS
+======================== */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.field-group label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.field-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.field-icon {
+    position: absolute;
+    left: 15px;
+    width: 17px;
+    height: 17px;
+    color: rgba(255,255,255,0.3);
+    pointer-events: none;
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+
+.field-wrap:focus-within .field-icon {
+    color: #60a5fa;
+}
+
+.field-wrap input {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 14px 46px 14px 46px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+    outline: none;
+}
+
+.field-wrap input::placeholder {
+    color: rgba(255,255,255,0.2);
+}
+
+.field-wrap input:focus {
+    border-color: #3b82f6;
+    background: rgba(59,130,246,0.1);
+    box-shadow: 0 0 0 4px rgba(59,130,246,0.18);
+}
+
+.field-wrap input.invalid {
+    border-color: #f87171;
+    background: rgba(248,113,113,0.09);
+    box-shadow: 0 0 0 4px rgba(248,113,113,0.15);
+}
+
+/* Password eye toggle */
+.pwd-toggle {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    color: rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+    border-radius: 6px;
+}
+
+.pwd-toggle:hover {
+    color: rgba(255,255,255,0.75);
+    background: none;
+    transform: none;
+    box-shadow: none;
+}
+
+.pwd-toggle:focus-visible {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+}
+
+.pwd-toggle svg {
+    width: 17px;
+    height: 17px;
+    pointer-events: none;
+}
+
+/* Error text under fields */
+.error-msg {
+    font-size: 0.79rem;
+    color: #fca5a5;
+    font-weight: 500;
+}
+
+.error-msg:empty {
+    display: none;
+}
+
+/* Auth-level error banner */
+.auth-error {
+    background: rgba(239,68,68,0.14);
+    border: 1px solid rgba(239,68,68,0.35);
+    color: #fca5a5;
+    border-radius: 10px;
+    padding: 13px 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* ========================
+   LOGIN BUTTON
+======================== */
+
+.btn-login {
+    width: 100%;
+    padding: 15px 24px;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 28px rgba(37,99,235,0.45);
+    position: relative;
+    overflow: hidden;
+    margin-top: 4px;
+}
+
+.btn-login::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.btn-login:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 36px rgba(37,99,235,0.6);
+}
+
+.btn-login:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-login:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-arrow {
+    font-size: 1.15rem;
+    transition: transform 0.2s;
+}
+
+.btn-login:hover:not(:disabled) .btn-arrow {
+    transform: translateX(5px);
+}
+
+/* Spinner inside button */
+.btn-spinner .spin {
+    width: 18px;
+    height: 18px;
+    animation: spinAnim 0.75s linear infinite;
+}
+
+@keyframes spinAnim {
+    to { transform: rotate(360deg); }
+}
+
+/* ========================
+   HINT TEXT
+======================== */
+
+.hint-text {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+}
+
+.hint-text code {
+    background: rgba(255,255,255,0.1);
+    border-radius: 5px;
+    padding: 2px 7px;
+    font-family: 'Courier New', monospace;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.8rem;
+}
+
+/* ========================
+   RESPONSIVE
+======================== */
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 36px 26px;
+    }
+
+    .brand-name {
+        font-size: 1.65rem;
+    }
+}

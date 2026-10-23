@@ -6,6 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="SportsZone - Sports, fitness and teamwork portfolio">
     <title>SportsZone | Sports Portfolio</title>
+
+    <!--
+        AUTH GUARD
+        Runs synchronously before the page renders.
+        If the user is not logged in, they are
+        immediately redirected to the login page.
+    -->
+    <script>
+        if (localStorage.getItem("szLoggedIn") !== "true") {
+            location.replace("login.html");
+        }
+    </script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -13,7 +31,7 @@
 
     <header>
         <nav>
-            <h2>SportsZone</h2>
+            <h2>⚽ SportsZone</h2>
 
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -24,43 +42,48 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
 
-            <button type="button" id="themeToggle">🌙 Dark Mode</button>
+            <div class="nav-actions">
+                <span id="userGreeting" class="user-greeting"></span>
+                <button type="button" id="themeToggle">🌙 Dark Mode</button>
+                <button type="button" id="logoutBtn">🚪 Logout</button>
+            </div>
         </nav>
     </header>
 
     <main>
+
+        <!-- ========================
+             HOME SECTION
+        ======================== -->
         <section id="home" class="home">
             <img
                 src="https://placehold.co/180x180?text=Sports"
                 alt="Sports profile placeholder"
             >
-
             <h1>Welcome to My Sports Portfolio</h1>
             <h3>Passion, Performance and Teamwork</h3>
-
             <p>
                 I am a sports enthusiast who loves cricket, football
                 and badminton. Sports teach me discipline, teamwork
                 and the importance of never giving up.
             </p>
-
             <a href="#about" class="btn">Explore More</a>
             <a href="#scores" class="btn">View Match Scores</a>
         </section>
 
+        <!-- ========================
+             ABOUT SECTION
+        ======================== -->
         <section id="about" class="section">
             <h2>About Me</h2>
-
             <p>
                 I enjoy participating in sports activities and learning
                 new techniques. My goal is to improve my fitness,
                 develop my abilities and encourage others to lead
                 an active lifestyle.
             </p>
-
             <h3>My Favourite Sports</h3>
             <p>Cricket, Football, Badminton and Basketball</p>
-
             <h3>My Goals</h3>
             <p>
                 Improve fitness, build teamwork and participate
@@ -68,22 +91,26 @@
             </p>
         </section>
 
+        <!-- ========================
+             SKILLS SECTION
+        ======================== -->
         <section id="skills" class="section">
             <h2>My Sports Skills</h2>
-
             <div class="skills">
-                <div class="card">Teamwork</div>
-                <div class="card">Leadership</div>
-                <div class="card">Physical Fitness</div>
-                <div class="card">Concentration</div>
-                <div class="card">Time Management</div>
-                <div class="card">Decision Making</div>
+                <div class="card">🤝 Teamwork</div>
+                <div class="card">🏆 Leadership</div>
+                <div class="card">💪 Physical Fitness</div>
+                <div class="card">🎯 Concentration</div>
+                <div class="card">⏱️ Time Management</div>
+                <div class="card">⚡ Decision Making</div>
             </div>
         </section>
 
+        <!-- ========================
+             ACTIVITIES SECTION
+        ======================== -->
         <section id="projects" class="section">
             <h2>Sports Activities</h2>
-
             <p>Search activities or filter them by category.</p>
 
             <div class="activity-controls">
@@ -93,7 +120,6 @@
                     placeholder="Search activities..."
                     aria-label="Search sports activities"
                 >
-
                 <select id="categoryFilter" aria-label="Filter by category">
                     <option value="all">All Activities</option>
                     <option value="cricket">Cricket</option>
@@ -101,67 +127,58 @@
                     <option value="football">Football</option>
                     <option value="badminton">Badminton</option>
                 </select>
-
-                <button type="button" id="clearSearch">Clear Search</button>
-                <button type="button" id="favoritesOnly">Show Favourites</button>
+                <button type="button" id="clearSearch">✕ Clear</button>
+                <button type="button" id="favoritesOnly">♥ Show Favourites</button>
             </div>
 
             <p id="activityCount" aria-live="polite"></p>
 
             <div class="projects" id="activityList">
+
                 <article class="card activity-card" data-category="cricket">
-                    <h3>Cricket Tournament</h3>
-                    <p>
-                        A team activity focused on batting, bowling,
-                        fielding and coordination.
-                    </p>
+                    <h3>🏏 Cricket Tournament</h3>
+                    <p>A team activity focused on batting, bowling, fielding and coordination.</p>
                     <p><strong>Skills:</strong> Teamwork, Strategy</p>
-                    <button type="button" class="favorite-btn">
+                    <button type="button" class="favorite-btn" aria-pressed="false">
                         ♡ Add to Favourites
                     </button>
                 </article>
 
                 <article class="card activity-card" data-category="fitness">
-                    <h3>Fitness Challenge</h3>
-                    <p>
-                        Improve stamina, strength and overall
-                        physical fitness through regular exercise.
-                    </p>
+                    <h3>💪 Fitness Challenge</h3>
+                    <p>Improve stamina, strength and overall physical fitness through regular exercise.</p>
                     <p><strong>Skills:</strong> Fitness, Discipline</p>
-                    <button type="button" class="favorite-btn">
+                    <button type="button" class="favorite-btn" aria-pressed="false">
                         ♡ Add to Favourites
                     </button>
                 </article>
 
                 <article class="card activity-card" data-category="football">
-                    <h3>Football Match</h3>
-                    <p>
-                        Develop passing, coordination, tactical
-                        awareness and teamwork.
-                    </p>
+                    <h3>⚽ Football Match</h3>
+                    <p>Develop passing, coordination, tactical awareness and teamwork.</p>
                     <p><strong>Skills:</strong> Teamwork, Strategy</p>
-                    <button type="button" class="favorite-btn">
+                    <button type="button" class="favorite-btn" aria-pressed="false">
                         ♡ Add to Favourites
                     </button>
                 </article>
 
                 <article class="card activity-card" data-category="badminton">
-                    <h3>Badminton Practice</h3>
-                    <p>
-                        Improve footwork, speed, reaction time
-                        and shot accuracy.
-                    </p>
+                    <h3>🏸 Badminton Practice</h3>
+                    <p>Improve footwork, speed, reaction time and shot accuracy.</p>
                     <p><strong>Skills:</strong> Agility, Concentration</p>
-                    <button type="button" class="favorite-btn">
+                    <button type="button" class="favorite-btn" aria-pressed="false">
                         ♡ Add to Favourites
                     </button>
                 </article>
+
             </div>
         </section>
 
+        <!-- ========================
+             SCORES SECTION
+        ======================== -->
         <section id="scores" class="section">
-            <h2>Live Scores & Match Schedules</h2>
-
+            <h2>Live Scores &amp; Match Schedules</h2>
             <p>
                 Get football fixtures and scores from the sports API.
                 Match availability depends on the provider's coverage.
@@ -170,28 +187,51 @@
             <div class="score-controls">
                 <label for="matchDate">Choose a match date:</label>
                 <input type="date" id="matchDate">
+                <button type="button" id="loadScores">📅 Load Matches</button>
+                <button type="button" id="liveOnly">🔴 Live Matches</button>
+            </div>
 
-                <button type="button" id="loadScores">
-                    Load Matches
-                </button>
-
-                <button type="button" id="liveOnly">
-                    Show Live Matches
-                </button>
+            <!--
+                VIEW TOGGLE
+                Shown only after match data has loaded.
+                Lets the user switch between card layout and table layout.
+            -->
+            <div class="view-toggle" id="viewToggle" hidden>
+                <button type="button" id="cardViewBtn" class="view-btn active">🃏 Card View</button>
+                <button type="button" id="tableViewBtn" class="view-btn">📊 Table View</button>
             </div>
 
             <p id="scoreStatus" aria-live="polite">
                 Select a date or load live matches.
             </p>
 
+            <!-- Card layout (default) -->
             <div id="matchList" class="projects"></div>
+
+            <!-- Table layout (hidden until user switches) -->
+            <div class="table-wrapper" id="matchTableWrapper" hidden>
+                <table id="matchTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Home Team</th>
+                            <th scope="col">Score</th>
+                            <th scope="col">Away Team</th>
+                            <th scope="col">League</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Kick-off</th>
+                        </tr>
+                    </thead>
+                    <tbody id="matchTableBody"></tbody>
+                </table>
+            </div>
         </section>
 
+        <!-- ========================
+             CONTACT SECTION
+        ======================== -->
         <section id="contact" class="section">
             <h2>Contact Me</h2>
-
             <p>Email: sportsfan@example.com</p>
-
             <p>
                 <a href="https://www.instagram.com/"
                    target="_blank" rel="noopener noreferrer">
@@ -202,6 +242,7 @@
             <h3>Send a Message</h3>
 
             <form id="contactForm" novalidate>
+
                 <label for="name">Your Name</label>
                 <input
                     type="text"
@@ -231,8 +272,8 @@
                 ></textarea>
                 <small class="error" id="messageError"></small>
 
-                <button type="submit" id="sendMessage">Validate Message</button>
-                <button type="reset" class="secondary-btn">Reset Form</button>
+                <button type="submit" id="sendMessage">📨 Validate Message</button>
+                <button type="reset" class="secondary-btn">↺ Reset Form</button>
 
                 <p id="formStatus" aria-live="polite"></p>
             </form>
@@ -242,11 +283,12 @@
                 Avoid entering sensitive information.
             </p>
         </section>
+
     </main>
 
     <footer>
-        <p>&copy; 2026 SportsZone | Sports Portfolio</p>
-        <p>Play Hard, Stay Fit and Never Give Up!</p>
+        <p>© 2026 SportsZone | Sports Portfolio</p>
+        <p>Play Hard, Stay Fit and Never Give Up! 🏆</p>
     </footer>
 
 </body>

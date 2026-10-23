@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SportsZone Login — Access your sports portfolio dashboard">
+    <title>SportsZone | Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <!-- Animated background blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <main class="login-wrapper">
+        <div class="login-card" id="loginCard">
+
+            <!-- Brand -->
+            <div class="brand">
+                <div class="brand-icon">⚽</div>
+                <h1 class="brand-name">SportsZone</h1>
+                <p class="brand-tagline">Your Ultimate Sports Portfolio</p>
+            </div>
+
+            <!-- Form -->
+            <form id="loginForm" novalidate>
+
+                <!-- Username -->
+                <div class="field-group">
+                    <label for="username">Username</label>
+                    <div class="field-wrap">
+                        <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <circle cx="12" cy="8" r="4"/>
+                            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                        </svg>
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="Enter your username"
+                            autocomplete="username"
+                            required
+                            aria-describedby="usernameError"
+                        >
+                    </div>
+                    <small class="error-msg" id="usernameError" role="alert"></small>
+                </div>
+
+                <!-- Password -->
+                <div class="field-group">
+                    <label for="password">Password</label>
+                    <div class="field-wrap">
+                        <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <rect x="3" y="11" width="18" height="11" rx="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                            aria-describedby="passwordError"
+                        >
+                        <button type="button" id="togglePassword" class="pwd-toggle" aria-label="Show or hide password">
+                            <svg id="eyeOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <svg id="eyeClosed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" hidden>
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                <line x1="1" y1="1" x2="23" y2="23"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <small class="error-msg" id="passwordError" role="alert"></small>
+                </div>
+
+                <!-- Auth-level error banner -->
+                <div class="auth-error" id="authError" role="alert" hidden>
+                    Incorrect username or password.
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" id="loginBtn" class="btn-login">
+                    <span id="btnLabel">Login to SportsZone</span>
+                    <span class="btn-arrow" id="btnArrow">→</span>
+                    <span class="btn-spinner" id="btnSpinner" hidden>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="spin">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                        </svg>
+                    </span>
+                </button>
+
+            </form>
+
+            <p class="hint-text">
+                Demo credentials: <code>admin</code> / <code>sports123</code>
+            </p>
+
+        </div>
+    </main>
+
+    <script src="login.js"></script>
+</body>
+</html>
