@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SportsZone - Sports, fitness and teamwork portfolio">
+    <title>SportsZone | Sports Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <h2>SportsZone</h2>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Activities</a></li>
+                <li><a href="#scores">Live Scores</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <button type="button" id="themeToggle">🌙 Dark Mode</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="home">
+            <img
+                src="https://placehold.co/180x180?text=Sports"
+                alt="Sports profile placeholder"
+            >
+
+            <h1>Welcome to My Sports Portfolio</h1>
+            <h3>Passion, Performance and Teamwork</h3>
+
+            <p>
+                I am a sports enthusiast who loves cricket, football
+                and badminton. Sports teach me discipline, teamwork
+                and the importance of never giving up.
+            </p>
+
+            <a href="#about" class="btn">Explore More</a>
+            <a href="#scores" class="btn">View Match Scores</a>
+        </section>
+
+        <section id="about" class="section">
+            <h2>About Me</h2>
+
+            <p>
+                I enjoy participating in sports activities and learning
+                new techniques. My goal is to improve my fitness,
+                develop my abilities and encourage others to lead
+                an active lifestyle.
+            </p>
+
+            <h3>My Favourite Sports</h3>
+            <p>Cricket, Football, Badminton and Basketball</p>
+
+            <h3>My Goals</h3>
+            <p>
+                Improve fitness, build teamwork and participate
+                in competitions.
+            </p>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>My Sports Skills</h2>
+
+            <div class="skills">
+                <div class="card">Teamwork</div>
+                <div class="card">Leadership</div>
+                <div class="card">Physical Fitness</div>
+                <div class="card">Concentration</div>
+                <div class="card">Time Management</div>
+                <div class="card">Decision Making</div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2>Sports Activities</h2>
+
+            <p>Search activities or filter them by category.</p>
+
+            <div class="activity-controls">
+                <input
+                    type="search"
+                    id="activitySearch"
+                    placeholder="Search activities..."
+                    aria-label="Search sports activities"
+                >
+
+                <select id="categoryFilter" aria-label="Filter by category">
+                    <option value="all">All Activities</option>
+                    <option value="cricket">Cricket</option>
+                    <option value="fitness">Fitness</option>
+                    <option value="football">Football</option>
+                    <option value="badminton">Badminton</option>
+                </select>
+
+                <button type="button" id="clearSearch">Clear Search</button>
+                <button type="button" id="favoritesOnly">Show Favourites</button>
+            </div>
+
+            <p id="activityCount" aria-live="polite"></p>
+
+            <div class="projects" id="activityList">
+                <article class="card activity-card" data-category="cricket">
+                    <h3>Cricket Tournament</h3>
+                    <p>
+                        A team activity focused on batting, bowling,
+                        fielding and coordination.
+                    </p>
+                    <p><strong>Skills:</strong> Teamwork, Strategy</p>
+                    <button type="button" class="favorite-btn">
+                        ♡ Add to Favourites
+                    </button>
+                </article>
+
+                <article class="card activity-card" data-category="fitness">
+                    <h3>Fitness Challenge</h3>
+                    <p>
+                        Improve stamina, strength and overall
+                        physical fitness through regular exercise.
+                    </p>
+                    <p><strong>Skills:</strong> Fitness, Discipline</p>
+                    <button type="button" class="favorite-btn">
+                        ♡ Add to Favourites
+                    </button>
+                </article>
+
+                <article class="card activity-card" data-category="football">
+                    <h3>Football Match</h3>
+                    <p>
+                        Develop passing, coordination, tactical
+                        awareness and teamwork.
+                    </p>
+                    <p><strong>Skills:</strong> Teamwork, Strategy</p>
+                    <button type="button" class="favorite-btn">
+                        ♡ Add to Favourites
+                    </button>
+                </article>
+
+                <article class="card activity-card" data-category="badminton">
+                    <h3>Badminton Practice</h3>
+                    <p>
+                        Improve footwork, speed, reaction time
+                        and shot accuracy.
+                    </p>
+                    <p><strong>Skills:</strong> Agility, Concentration</p>
+                    <button type="button" class="favorite-btn">
+                        ♡ Add to Favourites
+                    </button>
+                </article>
+            </div>
+        </section>
+
+        <section id="scores" class="section">
+            <h2>Live Scores & Match Schedules</h2>
+
+            <p>
+                Get football fixtures and scores from the sports API.
+                Match availability depends on the provider's coverage.
+            </p>
+
+            <div class="score-controls">
+                <label for="matchDate">Choose a match date:</label>
+                <input type="date" id="matchDate">
+
+                <button type="button" id="loadScores">
+                    Load Matches
+                </button>
+
+                <button type="button" id="liveOnly">
+                    Show Live Matches
+                </button>
+            </div>
+
+            <p id="scoreStatus" aria-live="polite">
+                Select a date or load live matches.
+            </p>
+
+            <div id="matchList" class="projects"></div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Contact Me</h2>
+
+            <p>Email: sportsfan@example.com</p>
+
+            <p>
+                <a href="https://www.instagram.com/"
+                   target="_blank" rel="noopener noreferrer">
+                    Sports Community
+                </a>
+            </p>
+
+            <h3>Send a Message</h3>
+
+            <form id="contactForm" novalidate>
+                <label for="name">Your Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Your Name"
+                    autocomplete="name"
+                    required
+                >
+                <small class="error" id="nameError"></small>
+
+                <label for="email">Your Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Your Email"
+                    autocomplete="email"
+                    required
+                >
+                <small class="error" id="emailError"></small>
+
+                <label for="message">Your Message</label>
+                <textarea
+                    id="message"
+                    placeholder="Your Message (at least 10 characters)"
+                    rows="5"
+                    required
+                ></textarea>
+                <small class="error" id="messageError"></small>
+
+                <button type="submit" id="sendMessage">Validate Message</button>
+                <button type="reset" class="secondary-btn">Reset Form</button>
+
+                <p id="formStatus" aria-live="polite"></p>
+            </form>
+
+            <p class="note">
+                Demo form: messages are not sent to an email or server.
+                Avoid entering sensitive information.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SportsZone | Sports Portfolio</p>
+        <p>Play Hard, Stay Fit and Never Give Up!</p>
+    </footer>
+
+</body>
+</html>
